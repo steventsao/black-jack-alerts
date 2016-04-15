@@ -1,28 +1,47 @@
-import { shuffle } from 'lodash';
+import { Deck } from './cards.js';
+import { Player } from './player.js';
 
-class Card {
-  constructor(rank, suit, flipped = true) {
-    this.rank = rank;
-    this.suit = suit;
-    this.flipped = flipped;
-  }
-  flip() {
-    this.flipped = !this.flipped;
-  }
+let gameDeck = new Deck();
+
+function deal(...players) {
+  let hand;
+  players.forEach(player => {
+    hand = [gameDeck.deck.pop(), gameDeck.deck.pop()];
+    hand[0].flip();
+    player.setHand(hand);
+  });
 }
 
-class Deck {
-  constructor() {
-    this.suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
-    this.ranks = ['Ace', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
-    this.deck = shuffle(this.createDeck());
+class BlackJackPlayer extends Player {
+  constructor(points, name, score, hand){
+    super(name, score, hand);
+    this.points = points;
+    this.isBusted = false;
   }
-  createDeck() {
-    return this.suits.reduce((deck, suit) => {
-      let ranksInASuit = this.ranks.map(rank => new Card(rank, suit));
-      return deck.concat(ranksInASuit);
-    }, []);
+  hit() {
+    this.hand.push(gameDeck.deck.pop());
+    this.checkBust();
+  }
+  stand() {
+
+  }
+  split() {
+
+  }
+  checkBust() {
+    this.isBusted = this.hand.reduce((sum, card) => {
+      if (['Jack', 'Queen', 'King'].indexOf(card.rank) !== -1) {
+        return sum + 10;
+      } else if (card.rank === 'Ace') {
+        if (sum + 10 > 21) {
+          return sum + 1;
+        } else {
+          return sum + 10;
+        }
+      } else {
+        return sum + Number(card.rank);
+      }
+    }, 0) > 21;
   }
 }
-
-export { Deck, Card };
+export { deal, BlackJackPlayer };
