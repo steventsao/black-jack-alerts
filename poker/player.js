@@ -4,6 +4,7 @@ class Player {
     this.score = score;
     this.hand = hand;
     this.hasTurn = hasTurn;
+    this.currentBet = 0;
   }
   setHand(hand){
     this.hand = hand;
@@ -16,6 +17,9 @@ class Player {
   }
   isDone(next) {
     next();
+  }
+  toBet(amount) {
+      this.currentBet += amount;
   }
 }
 

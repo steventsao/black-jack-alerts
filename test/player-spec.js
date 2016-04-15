@@ -3,9 +3,9 @@ import { Deck } from '../poker/cards.js';
 import expect from 'expect';
 
 describe('Player', () => {
-  it('should expose 4 properties', () => {
+  it('should expose 5 properties', () => {
     let player = new Player('Bob');
-    expect(Object.keys(player).length).toEqual(4);
+    expect(Object.keys(player).length).toEqual(5);
   });
 
   describe('setHand()', () => {

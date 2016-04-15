@@ -9,8 +9,8 @@ describe('Texas Hold\'em', () => {
       player = new HoldemPlayer();
       deal(player);
     });
-    it('should expose 5 properties', () => {
-      expect(Object.keys(player).length).toEqual(6);
+    it('should expose 7 properties', () => {
+      expect(Object.keys(player).length).toEqual(7);
     });
   });
 });
