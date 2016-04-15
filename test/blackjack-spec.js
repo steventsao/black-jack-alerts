@@ -1,7 +1,7 @@
 import expect from 'expect';
-import { deal, BlackJackPlayer } from '../blackjack.js';
-import { Player } from '../player.js';
-import { Card } from '../cards.js';
+import { deal, BlackJackPlayer } from '../poker/blackjack.js';
+import { Player } from '../poker/player.js';
+import { Card } from '../poker/cards.js';
 describe('Blackjack', () => {
   let playerOne;
   let playerTwo;

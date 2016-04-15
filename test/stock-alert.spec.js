@@ -1,5 +1,5 @@
 import expect from 'expect';
-import { getFriendsListForUser, getTradeTransactionsForUser } from '../stock-alert.js';
+import { getFriendsListForUser, getTradeTransactionsForUser } from '../stock/stock-alert.js';
 import { uniq } from 'lodash';
 
 describe('Stocks Your Friends Are Trading', () => {

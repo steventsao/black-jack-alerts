@@ -1,5 +1,5 @@
 import expect from 'expect';
-import { Deck, Card } from '../cards.js';
+import { Deck, Card } from '../poker/cards.js';
 
 describe('Card', () => {
   let testCard;
