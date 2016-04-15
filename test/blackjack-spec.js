@@ -1,8 +1,16 @@
 import expect from 'expect';
-import { BlackJackPlayer } from '../poker/blackjack.js';
-import { deal } from '../poker/match.js';
-import { Player } from '../poker/player.js';
-import { Card } from '../poker/cards.js';
+import {
+  BlackJackPlayer
+} from '../poker/blackjack.js';
+import {
+  deal
+} from '../poker/match.js';
+import {
+  Player
+} from '../poker/player.js';
+import {
+  Card
+} from '../poker/cards.js';
 describe('Blackjack', () => {
   let playerOne;
   let playerTwo;
