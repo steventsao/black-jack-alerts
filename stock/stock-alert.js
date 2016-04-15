@@ -63,6 +63,7 @@ let rankTrendingStocks = function(targetId) {
     // findUser takes O(n) in time and O(1) in space complexity
     findUser(targetId)
     .then(user => {
+      // promisifying all users by iterating through the array in O(n) pushes the current algorithm to O(n^2) in time and O(n) in space.
       let promises = user.friends.map(friend => {
         return new Promise((resolve, reject) => {
           findUser(friend)
@@ -87,6 +88,7 @@ let rankTrendingStocks = function(targetId) {
           });
           return obj;
         }, {});
+        // Since sortedStock is an object created after the resolved promises, the time complexity stays at quadratic but is now 2 O(n^2) and space complexity is 2 O(n).
         let sortedStock = Object.keys(stockCounts).sort((a, b) => stockCounts[b] - stockCounts[a]);
         let alerts = sortedStock.map(stock => `${stockCounts[stock]},${stockCounts[stock] < 0 ? 'SELL' : 'BUY'},${stock}`);
         returnResolve(alerts);
