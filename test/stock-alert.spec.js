@@ -4,11 +4,11 @@ import { uniq } from 'lodash';
 
 describe('Stocks Your Friends Are Trading', () => {
   describe('getFriendsListForUser()', () => {
-    it('should return an array', () => {
+    xit('should return an array', () => {
       expect(Array.isArray(getFriendsListForUser('A1234'))).toEqual(true);
     });
 
-    it('should throw with invalid input', () => {
+    xit('should throw with invalid input', () => {
       expect(getFriendsListForUser).withArgs().toThrow(/Invalid input/);
     });
 
@@ -20,15 +20,15 @@ describe('Stocks Your Friends Are Trading', () => {
   });
 
   describe('getTradeTransactionsForUser()', () => {
-    it('should return an array', () => {
+    xit('should return an array', () => {
       expect(Array.isArray(getTradeTransactionsForUser('A1234'))).toEqual(true);
     });
 
-    it('should throw with invalid input', () => {
+    xit('should throw with invalid input', () => {
       expect(getTradeTransactionsForUser).withArgs().toThrow(/Invalid input/);
     });
 
-    it('item should contain three elements', () => {
+    xit('item should contain three elements', () => {
       expect(getTradeTransactionsForUser('A1234').split(',').length).toEqual(3);
     });
   });
