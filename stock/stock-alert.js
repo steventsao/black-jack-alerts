@@ -84,15 +84,15 @@ let rankTrendingStocks = function(targetId) {
       Promise.all(promises)
       .then(users => {
         let stockCounts = users.reduce((obj, user) => {
-          user.transactions.forEach(transaction => {
-            if (isNaN(obj[transaction.stockSymbol])) {
-              obj[transaction.stockSymbol] = 0;
+          Object.keys(user.transactions).forEach(key => {
+            let currentComp = user.transactions[key].stockSymbol;
+            if (obj[currentComp] === undefined) {
+              obj[currentComp] = 0;
             }
-            obj[transaction.stockSymbol] = transaction.orderType === 'BUY' ?
-              obj[transaction.stockSymbol] + 1
-            : obj[transaction.stockSymbol] - 1;
+            obj[currentComp] = user.transactions[key].orderType === 'BUY' ?
+              obj[currentComp] + 1
+            : obj[currentComp] - 1;
           });
-          console.log(obj);
           return obj;
         }, {});
         // Since sortedStock is an object created after the resolved promises, the time complexity stays at quadratic but is now 2 O(n^2) and space complexity is 2 O(n).

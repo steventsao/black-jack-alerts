@@ -39,6 +39,7 @@ describe('Stocks Your Friends Are Trading', () => {
       expect(getFriendsListForUser).withArgs().toThrow(/Invalid input/);
     });
 
+    // NOTE: Test doesn't always pass since json generator can have duplicate ids on randomization
     it('should not have duplicate user IDs', (done) => {
       let userIds;
       let uniqUserIds;
@@ -72,31 +73,39 @@ describe('Stocks Your Friends Are Trading', () => {
     it('should throw with invalid input', () => {
       expect(getTradeTransactionsForUser).withArgs().toThrow(/Invalid input/);
     });
-
-    // it('item should contain three elements', (done) => {
-    //   getTradeTransactionsForUser(Math.floor(Math.random()*99))
-    //   .then(transactions => {
-    //     expect(transactions[Math.floor(Math.random()*transactions.length - 1)].split(',').length).toEqual(3);
-    //     done();
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //     done();
-    //   });
-    // });
   });
 
   describe('rankTrendingStocks()', () => {
-    // it('should return an array', (done) => {
-      // rankTrendingStocks(Math.floor(Math.random()*99))
-      // .then(alerts => {
-      //   expect(Array.isArray(alerts)).toEqual(true);
-      //   done();
-      // })
-      // .catch(err => {
-      //   console.log(err);
-      //   done();
-      // });
-    // });
+    let testAlerts;
+    beforeEach((done) => {
+      rankTrendingStocks(Math.floor(Math.random()*99))
+      .then(alerts => {
+        testAlerts = alerts;
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
+      });
+    });
+    it('should return an array', () => {
+      expect(Array.isArray(testAlerts)).toEqual(true);
+    });
+
+    it('should be formatted correctly', () => {
+      testAlerts.forEach(alert => {
+        expect(alert.split(',').length).toEqual(3);
+      });
+    });
+
+    it('should come sorted in descending order', () => {
+      let numberList = testAlerts.map(alert => Number(alert.split(',')[0]));
+      numberList.forEach((num, i) => {
+        if (i > 0) {
+          expect(num).toBeLessThanOrEqualTo(numberList[i-1]);
+        }
+      });
+
+    });
   });
 });
