@@ -76,9 +76,9 @@ let rankTrendingStocks = function(targetId) {
       });
       Promise.all(promises)
       .then(users => {
-        let trendingStocks = users.reduce((obj, user) => {
+        let stockCounts = users.reduce((obj, user) => {
           user.transactions.forEach(transaction => {
-            if (obj[transaction.stockSymbol] === undefined) {
+            if (isNaN(obj[transaction.stockSymbol])) {
               obj[transaction.stockSymbol] = 0;
             }
             if (transaction.orderType === 'BUY') {
@@ -87,11 +87,11 @@ let rankTrendingStocks = function(targetId) {
               obj[transaction.stockSymbol] = obj[transaction.stockSymbol] - 1;
             }
           });
-          console.log(obj);
           return obj;
         }, {});
-
-        returnResolve(trendingStocks);
+        let sortedStock = Object.keys(stockCounts).sort((a, b) => stockCounts[b] - stockCounts[a]);
+        let alerts = sortedStock.map(stock => `${stockCounts[stock]},${stockCounts[stock] < 0 ? 'SELL' : 'BUY'},${stock}`);
+        returnResolve(alerts);
       });
     });
   });

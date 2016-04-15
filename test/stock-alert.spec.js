@@ -56,9 +56,8 @@ describe('Stocks Your Friends Are Trading', () => {
   describe('rankTrendingStocks()', () => {
     it('should get all friends', () => {
       rankTrendingStocks(Math.floor(Math.random()*100))
-      .then(friends => {
-        console.log(friends.length);
-        expect(friends).toExist();
+      .then(alerts => {
+        expect(Array.isArray(alerts)).toEqual(true);
       });
     });
   });

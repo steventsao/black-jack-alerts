@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --require babel-core/register -w",
-    "server": "json-server --watch db.json",
-    "start": "npm run test & npm run server"
+    "start": "npm run test"
   },
   "babel": {
     "presets": [
