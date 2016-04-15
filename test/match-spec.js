@@ -16,7 +16,6 @@ describe('Match', () => {
       playerOne = new Player();
       playerTwo = new Player();
       match = new Match();
-
     });
 
     it('calls each player once', () => {
@@ -31,6 +30,7 @@ describe('Match', () => {
       let spyOne = expect.spyOn(playerOne, 'isDone');
       let spyTwo = expect.spyOn(playerTwo, 'isDone');
       match.startTurn([playerOne, playerTwo]);
+      // spyTwo should not be called since isDone is mocked
       expect(spyTwo.calls.length).toEqual(0);
     });
   });
