@@ -1,4 +1,6 @@
-import { shuffle } from 'lodash';
+import {
+  shuffle
+} from 'lodash';
 
 class Card {
   constructor(rank, suit, flipped = true) {
@@ -23,4 +25,7 @@ class Deck {
   }
 }
 
-export { Deck, Card };
+export {
+  Deck,
+  Card
+};

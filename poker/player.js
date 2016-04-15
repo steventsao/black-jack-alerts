@@ -6,7 +6,7 @@ class Player {
     this.hasTurn = hasTurn;
     this.currentBet = 0;
   }
-  setHand(hand){
+  setHand(hand) {
     this.hand = hand;
   }
   updateScore(points) {
@@ -19,8 +19,10 @@ class Player {
     next();
   }
   toBet(amount) {
-      this.currentBet += amount;
+    this.currentBet += amount;
   }
 }
 
-export { Player };
+export {
+  Player
+};

@@ -1,4 +1,6 @@
-import { Deck } from './cards.js';
+import {
+  Deck
+} from './cards.js';
 
 function deal(...players) {
   let gameDeck = new Deck();
@@ -23,9 +25,12 @@ class Match {
   startTurn(players, i = 0) {
     players[i].isDone(() => {
       i++;
-      if(i < players.length) this.startTurn(players, i);
+      if (i < players.length) this.startTurn(players, i);
     });
   }
 }
 
-export { deal, Match };
+export {
+  deal,
+  Match
+};

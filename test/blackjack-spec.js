@@ -36,14 +36,14 @@ describe('Blackjack', () => {
       });
     });
 
-    describe('stand()', () => {
+    xdescribe('stand()', () => {
 
     });
 
     describe('checkBust()', () => {
       it('should default to false', () => {
-          deal(playerOne);
-          expect(playerOne.isBusted).toEqual(false);
+        deal(playerOne);
+        expect(playerOne.isBusted).toEqual(false);
       });
 
       it('should update isBusted when player is over 21', () => {
@@ -55,6 +55,4 @@ describe('Blackjack', () => {
       });
     });
   });
-
-
 });

@@ -1,6 +1,10 @@
 import expect from 'expect';
-import { HoldemPlayer } from '../poker/holdem.js';
-import { deal } from '../poker/match.js';
+import {
+  HoldemPlayer
+} from '../poker/holdem.js';
+import {
+  deal
+} from '../poker/match.js';
 
 describe('Texas Hold\'em', () => {
   describe('Player', () => {

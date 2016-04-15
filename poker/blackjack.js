@@ -13,11 +13,11 @@ class BlackJackPlayer extends Player {
     this.hand.push(gameDeck.deck.pop());
     this.checkBust();
   }
+  // TODO
   stand() {
-
   }
+  // TODO
   split() {
-
   }
   checkBust() {
     this.isBusted = this.hand.reduce((sum, card) => {

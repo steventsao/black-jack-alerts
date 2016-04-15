@@ -1,6 +1,13 @@
-import { Deck } from './cards.js';
-import { Player } from './player.js';
-import { deal, Match } from './match.js';
+import {
+  Deck
+} from './cards.js';
+import {
+  Player
+} from './player.js';
+import {
+  deal,
+  Match
+} from './match.js';
 
 class HoldemPlayer extends Player {
   constructor(name, score, hand) {
@@ -29,11 +36,13 @@ class HoldemMatch extends Match {
     players,
     smallBlind,
     bigBlind
-    ) {
-      super(pot, players);
-      smallBlind = this.players[0];
-      bigBlind = this.players[1];
-    }
+  ) {
+    super(pot, players);
+    smallBlind = this.players[0];
+    bigBlind = this.players[1];
+  }
 }
 
-export { HoldemPlayer };
+export {
+  HoldemPlayer
+};

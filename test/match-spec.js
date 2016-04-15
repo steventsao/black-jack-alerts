@@ -1,5 +1,9 @@
-import { Match } from '../poker/match.js';
-import { Player } from '../poker/player.js';
+import {
+  Match
+} from '../poker/match.js';
+import {
+  Player
+} from '../poker/player.js';
 import expect from 'expect';
 
 describe('Match', () => {
@@ -22,7 +26,8 @@ describe('Match', () => {
     });
 
     it('waits for player one before proceeding to two', () => {
-      // placing a spy nullifies isDone, which match() depends on to iterate through players.
+      // placing a spy nullifies isDone,
+      // which match() depends on to iterate through players.
       let spyOne = expect.spyOn(playerOne, 'isDone');
       let spyTwo = expect.spyOn(playerTwo, 'isDone');
       match.startTurn([playerOne, playerTwo]);

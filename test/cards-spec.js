@@ -1,5 +1,8 @@
 import expect from 'expect';
-import { Deck, Card } from '../poker/cards.js';
+import {
+  Deck,
+  Card
+} from '../poker/cards.js';
 
 describe('Card', () => {
   let testCard;
@@ -8,7 +11,11 @@ describe('Card', () => {
   });
 
   it('should create a card', () => {
-    let expectedCard = { rank: 'Ace', suit: 'Spade', flipped: true };
+    let expectedCard = {
+      rank: 'Ace',
+      suit: 'Spade',
+      flipped: true
+    };
     expect(JSON.stringify(testCard)).toEqual(JSON.stringify(expectedCard));
   });
 
