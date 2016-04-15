@@ -3,17 +3,9 @@ import { Deck } from '../poker/cards.js';
 import expect from 'expect';
 
 describe('Player', () => {
-  it('should expose 3 properties', () => {
+  it('should expose 4 properties', () => {
     let player = new Player('Bob');
-    expect(Object.keys(player).length).toEqual(3);
-  });
-
-  it('should have default properties', () => {
-    let player = new Player();
-    let expectedPlayer = { name: 'Guest', score: 0, hand: [] };
-    Object.keys(player).forEach(property => {
-      expect(player[property]).toEqual(expectedPlayer[property]);
-    });
+    expect(Object.keys(player).length).toEqual(4);
   });
 
   describe('setHand()', () => {

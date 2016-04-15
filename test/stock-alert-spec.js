@@ -105,7 +105,6 @@ describe('Stocks Your Friends Are Trading', () => {
           expect(num).toBeLessThanOrEqualTo(numberList[i-1]);
         }
       });
-
     });
   });
 });

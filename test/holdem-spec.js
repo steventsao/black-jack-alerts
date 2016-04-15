@@ -10,7 +10,7 @@ describe('Texas Hold\'em', () => {
       deal(player);
     });
     it('should expose 5 properties', () => {
-      expect(Object.keys(player).length).toEqual(5);
+      expect(Object.keys(player).length).toEqual(6);
     });
   });
 });

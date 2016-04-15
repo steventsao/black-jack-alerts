@@ -23,7 +23,7 @@ class Match {
   startTurn(players, i = 0) {
     players[i].isDone(() => {
       i++;
-      if(i < players.length) startTurn(players, i);
+      if(i < players.length) this.startTurn(players, i);
     });
   }
 }

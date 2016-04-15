@@ -1,8 +1,9 @@
 class Player {
-  constructor(name = 'Guest', score = 0, hand = []) {
+  constructor(name = 'Guest', score = 0, hand = [], hasTurn = false) {
     this.name = name;
     this.score = score;
     this.hand = hand;
+    this.hasTurn = hasTurn;
   }
   setHand(hand){
     this.hand = hand;
@@ -13,8 +14,8 @@ class Player {
   toggleTurn() {
     this.hasTurn = !this.hasTurn;
   }
-  isDone(cb) {
-    cb();
+  isDone(next) {
+    next();
   }
 }
 
