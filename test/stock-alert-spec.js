@@ -10,10 +10,15 @@ nock('http://localhost:3000')
 
 describe('Stocks Your Friends Are Trading', () => {
   describe('getFriendsListForUser()', () => {
-    it('should return an array', () => {
-      getFriendsListForUser(Math.floor(Math.random()*100))
+    it('should return an array', (done) => {
+      getFriendsListForUser(Math.floor(Math.random()*99))
       .then(friendIds => {
         expect(Array.isArray(friendIds)).toEqual(true);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
       });
     });
 
@@ -21,23 +26,34 @@ describe('Stocks Your Friends Are Trading', () => {
       expect(getFriendsListForUser).withArgs().toThrow(/Invalid input/);
     });
 
-    it('should not have duplicate user IDs', () => {
+    it('should not have duplicate user IDs', (done) => {
       let userIds;
       let uniqUserIds;
-      getFriendsListForUser(Math.floor(Math.random()*100))
+      getFriendsListForUser(Math.floor(Math.random()*99))
       .then(ids => {
         userIds = ids;
         uniqUserIds = uniq(userIds);
         expect(userIds.length).toEqual(uniqUserIds.length);
+        expect(userIds.length).toEqual(9);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
       });
     });
   });
 
   describe('getTradeTransactionsForUser()', () => {
-    it('should return an array', () => {
-      getTradeTransactionsForUser(Math.floor(Math.random()*100))
+    it('should return an array', (done) => {
+      getTradeTransactionsForUser(Math.floor(Math.random()*99))
       .then(transactions => {
-        expect(Array.isArray(transactions).toEqual(true));
+        expect(Array.isArray(transactions)).toEqual(true);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
       });
     });
 
@@ -45,19 +61,29 @@ describe('Stocks Your Friends Are Trading', () => {
       expect(getTradeTransactionsForUser).withArgs().toThrow(/Invalid input/);
     });
 
-    it('item should contain three elements', () => {
-      getTradeTransactionsForUser(Math.floor(Math.random()*100))
+    it('item should contain three elements', (done) => {
+      getTradeTransactionsForUser(Math.floor(Math.random()*99))
       .then(transactions => {
-        expect(transactions.split(',').length).toEqual(3);
+        expect(transactions[Math.floor(Math.random()*transactions.length - 1)].split(',').length).toEqual(3);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
       });
     });
   });
 
   describe('rankTrendingStocks()', () => {
-    it('should get all friends', () => {
-      rankTrendingStocks(Math.floor(Math.random()*100))
+    it('should return an array', (done) => {
+      rankTrendingStocks(Math.floor(Math.random()*99))
       .then(alerts => {
         expect(Array.isArray(alerts)).toEqual(true);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
       });
     });
   });

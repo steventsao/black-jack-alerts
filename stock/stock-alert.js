@@ -56,14 +56,14 @@ let getTradeTransactionsForUser = function(targetId) {
 };
 
 let rankTrendingStocks = function(targetId) {
-  let promises;
   if(!targetId) {
     throw new Error('Invalid input.');
   }
   return new Promise((returnResolve, returnReject) => {
+    // findUser takes O(n) in time and O(1) in space complexity
     findUser(targetId)
     .then(user => {
-      promises = user.friends.map(friend => {
+      let promises = user.friends.map(friend => {
         return new Promise((resolve, reject) => {
           findUser(friend)
           .then(foundFriend => {
@@ -81,11 +81,9 @@ let rankTrendingStocks = function(targetId) {
             if (isNaN(obj[transaction.stockSymbol])) {
               obj[transaction.stockSymbol] = 0;
             }
-            if (transaction.orderType === 'BUY') {
-              obj[transaction.stockSymbol] = obj[transaction.stockSymbol] + 1;
-            } else {
-              obj[transaction.stockSymbol] = obj[transaction.stockSymbol] - 1;
-            }
+            obj[transaction.stockSymbol] = transaction.orderType === 'BUY' ?
+              obj[transaction.stockSymbol] + 1
+            : obj[transaction.stockSymbol] - 1;
           });
           return obj;
         }, {});
