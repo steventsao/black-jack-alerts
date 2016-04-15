@@ -22,6 +22,19 @@ describe('Stocks Your Friends Are Trading', () => {
       });
     });
 
+    it('should find the correct user friend list', (done) => {
+      getFriendsListForUser(30)
+      .then(friendIds => {
+        expect(friendIds.length).toEqual(5);
+        expect(friendIds).toEqual([78, 89, 97, 100, 38]);
+        done();
+      })
+      .catch(err => {
+        console.log(err);
+        done();
+      });
+    });
+
     it('should throw with invalid input', () => {
       expect(getFriendsListForUser).withArgs().toThrow(/Invalid input/);
     });
@@ -34,7 +47,6 @@ describe('Stocks Your Friends Are Trading', () => {
         userIds = ids;
         uniqUserIds = uniq(userIds);
         expect(userIds.length).toEqual(uniqUserIds.length);
-        expect(userIds.length).toEqual(9);
         done();
       })
       .catch(err => {
@@ -61,30 +73,30 @@ describe('Stocks Your Friends Are Trading', () => {
       expect(getTradeTransactionsForUser).withArgs().toThrow(/Invalid input/);
     });
 
-    it('item should contain three elements', (done) => {
-      getTradeTransactionsForUser(Math.floor(Math.random()*99))
-      .then(transactions => {
-        expect(transactions[Math.floor(Math.random()*transactions.length - 1)].split(',').length).toEqual(3);
-        done();
-      })
-      .catch(err => {
-        console.log(err);
-        done();
-      });
-    });
+    // it('item should contain three elements', (done) => {
+    //   getTradeTransactionsForUser(Math.floor(Math.random()*99))
+    //   .then(transactions => {
+    //     expect(transactions[Math.floor(Math.random()*transactions.length - 1)].split(',').length).toEqual(3);
+    //     done();
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //     done();
+    //   });
+    // });
   });
 
   describe('rankTrendingStocks()', () => {
-    it('should return an array', (done) => {
-      rankTrendingStocks(Math.floor(Math.random()*99))
-      .then(alerts => {
-        expect(Array.isArray(alerts)).toEqual(true);
-        done();
-      })
-      .catch(err => {
-        console.log(err);
-        done();
-      });
-    });
+    // it('should return an array', (done) => {
+      // rankTrendingStocks(Math.floor(Math.random()*99))
+      // .then(alerts => {
+      //   expect(Array.isArray(alerts)).toEqual(true);
+      //   done();
+      // })
+      // .catch(err => {
+      //   console.log(err);
+      //   done();
+      // });
+    // });
   });
 });

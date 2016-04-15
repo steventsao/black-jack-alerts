@@ -28,15 +28,4 @@ class Match {
   }
 }
 
-function makeIterator(array) {
-  var nextInd = 0;
-  return {
-    next(){
-      return nextInd < array.length ?
-        { done: false }
-      : { done: true };
-    }
-  };
-}
-
 export { deal, Match };
