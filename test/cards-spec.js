@@ -31,6 +31,7 @@ describe('Deck', () => {
   beforeEach(() => {
     testDeck = new Deck();
   });
+  
   it('should have 52 cards', () => {
     expect(testDeck.deck.length).toEqual(52);
   });
