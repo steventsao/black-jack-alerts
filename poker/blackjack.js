@@ -3,15 +3,6 @@ import { Player } from './player.js';
 
 let gameDeck = new Deck();
 
-function deal(...players) {
-  let hand;
-  players.forEach(player => {
-    hand = [gameDeck.deck.pop(), gameDeck.deck.pop()];
-    hand[0].flip();
-    player.setHand(hand);
-  });
-}
-
 class BlackJackPlayer extends Player {
   constructor(points, name, score, hand){
     super(name, score, hand);
@@ -44,4 +35,4 @@ class BlackJackPlayer extends Player {
     }, 0) > 21;
   }
 }
-export { deal, BlackJackPlayer };
+export { BlackJackPlayer };

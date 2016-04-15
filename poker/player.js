@@ -10,6 +10,12 @@ class Player {
   updateScore(points) {
     this.score += points;
   }
+  toggleTurn() {
+    this.hasTurn = !this.hasTurn;
+  }
+  isDone(cb) {
+    cb();
+  }
 }
 
 export { Player };
