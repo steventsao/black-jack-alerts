@@ -40,13 +40,17 @@ describe('Blackjack', () => {
     });
 
     describe('checkBust()', () => {
+      it('should default to false', () => {
+          deal(playerOne);
+          expect(playerOne.isBusted).toEqual(false);
+      });
+
       it('should update isBusted when player is over 21', () => {
         let testHand = [new Card(10, 'Spade'), new Card(9, 'Heart'), new Card(2, 'Diamond')];
         playerOne.hand = testHand;
         expect(playerOne.isBusted).toEqual(false);
         playerOne.hit();
         expect(playerOne.isBusted).toEqual(true);
-
       });
     });
   });
