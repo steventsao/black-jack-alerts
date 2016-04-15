@@ -1,24 +1,26 @@
-import { Deck } from './cards.js';
-import { Player } from './player.js';
+import {
+  Deck
+} from './cards.js';
+import {
+  Player
+} from './player.js';
 
 let gameDeck = new Deck();
 
 class BlackJackPlayer extends Player {
-  constructor(points, name, score, hand){
+  constructor(points, name, score, hand) {
     super(name, score, hand);
     this.points = points;
     this.isBusted = false;
   }
   hit() {
-    this.hand.push(gameDeck.deck.pop());
-    this.checkBust();
-  }
-  // TODO
-  stand() {
-  }
-  // TODO
-  split() {
-  }
+      this.hand.push(gameDeck.deck.pop());
+      this.checkBust();
+    }
+    // TODO
+  stand() {}
+    // TODO
+  split() {}
   checkBust() {
     this.isBusted = this.hand.reduce((sum, card) => {
       if (['Jack', 'Queen', 'King'].indexOf(card.rank) !== -1) {
@@ -35,4 +37,6 @@ class BlackJackPlayer extends Player {
     }, 0) > 21;
   }
 }
-export { BlackJackPlayer };
+export {
+  BlackJackPlayer
+};
