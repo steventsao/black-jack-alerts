@@ -38,7 +38,7 @@ describe('Deck', () => {
 
   it('should create a random deck everytime', () => {
     let secondDeck = new Deck();
-    expect(secondDeck.deck).toNotEqual(testDeck.deck);
+    expect(JSON.stringify(secondDeck.deck)).toNotEqual(JSON.stringify(testDeck.deck));
   });
 
   it('should pop a card from the same deck', () => {
